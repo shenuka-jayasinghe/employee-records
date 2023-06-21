@@ -12,7 +12,7 @@ This will tun the database on Port 3000. Keep it running, and open a new termina
 
 ### 2. Open the client on angular after navigating to the 'ng-crud-tutorial' folder
 ```
-...crud-tutorial\ng-crud-tutorial> ng serve --opn
+...crud-tutorial\ng-crud-tutorial> ng serve --open
 ```
 This will open the client on Port 4200.
 
