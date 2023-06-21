@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sample.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<link href="sample.css" rel="stylesheet"></link>
+<h1 id="install-for-mean-environment">Install for MEAN environment</h1>
+<h2 id="nodejs">NodeJS</h2>
+<p><a href="https://nodejs.org/en/download/">NodeJS</a></p>
+<h2 id="mongodb">MongoDB</h2>
+<p><a href="https://www.mongodb.com/try/download/community?tck=docs_server">MongoDB (msi)</a></p>
+<p>In command prompt navigate to the MongoDB bin folder, run <code>mongod.exe</code> and select the folder you want to save your database in when working with a local MongoDB server</p>
+<pre class="hljs"><code><div>cd C:....\Programfiles\MongoDB\Server\(-v)\bin
+mongod.exe --dbpath C:\mongodata 
+</div></code></pre>
+<p>In MongoDB Compass Community create a Database Name and collection name.</p>
+<p>eg.</p>
+<table>
+<thead>
+<tr>
+<th>Database Name</th>
+<th>Collection Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CrudDB</td>
+<td>Employees</td>
+</tr>
+</tbody>
+</table>
+<h2 id="angular">Angular</h2>
+<pre class="hljs"><code><div>&gt; npm install -g @angular/cli
+</div></code></pre>
+<h2 id="creating-the-project-and-directories-folder-paths">Creating the Project and Directories (Folder paths)</h2>
+<p>Open new project folder in VScode (or relevant IDE).
+Create a new folder for NodeJS application.</p>
+<pre class="hljs"><code><div>..\Project&gt; mkdir NodeJS
+..\Project&gt; cd \NodeJS
+..\Project\NodeJS&gt; npm init
+</div></code></pre>
+<p>Agree to all the queries to create the <em>package.json</em> file.</p>
+<h2 id="installing-the-rest-of-the-dependencies-for-mean-stack">Installing the rest of the dependencies for MEAN stack</h2>
+<p>Install dependencies: mongoose, express, body-parser and save dependencies in <em>package.json</em> file.</p>
+<pre class="hljs"><code><div>&gt; npm i express mongoose body-parser --save
+</div></code></pre>
+<p>Install 'nodemon' so that you do not need to shutdown and reconnect your node and mongodb server everytime you update anything on a file.</p>
+<pre class="hljs"><code><div>&gt; npm i -g nodemon
+</div></code></pre>
+<h1 id="connect-database-to-node-server">Connect database to Node server</h1>
+<p>Create a new .js file in <em>NodeJS</em> folder to run the database server called <em>db.js</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+mongoose.set(<span class="hljs-string">'strictQuery'</span>, <span class="hljs-literal">true</span>);
+
+<span class="hljs-comment">//Connect to the MongoDB Database name</span>
+<span class="hljs-comment">//27017 is an arbitrary port to avoid port 3000</span>
+mongoose.connect(<span class="hljs-string">'mongodb://localhost:27017/CrudDB'</span>, (err) =&gt; {
+    <span class="hljs-keyword">if</span>(!err)
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'MongoDB connection succeeded.'</span>);
+    <span class="hljs-keyword">else</span> 
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Erorr in DB connection : '</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>));
+});
+
+<span class="hljs-comment">//connection needs to be established outside of this file most of the time</span>
+<span class="hljs-built_in">module</span>.exports = mongoose;
+</div></code></pre>
+<p>create a new file <em>index.js</em> inside the NodeJS folder.</p>
+<p>In the <em>index.js</em> file;</p>
+<ol>
+<li>Import the Express and Body Parser packages</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
+</div></code></pre>
+<ol start="2">
+<li>Import from local folder the mongoose connection. (Here we use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructering syntax for js</a>). This is importing the <code> module.exports = mongoose;</code> from the <em>db.js</em> file.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> { mongoose } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./db.js'</span>);
+</div></code></pre>
+<ol start="3">
+<li>Call the Express function and save in variable 'app'.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> app = express();
+</div></code></pre>
+<ol start="4">
+<li>Configure express middleware to send JSON data to the NodeJS project using <a href="https://www.npmjs.com/package/body-parser#bodyparserrawoptions">body-parser</a>.</li>
+</ol>
+<pre class="hljs"><code><div>app.use(bodyParser.json());
+</div></code></pre>
+<ol start="5">
+<li>Call the Express server using the <a href="https://expressjs.com/en/4x/api.html#app.listen">app.listen(<em>port, host, backlog, callback</em>)</a> method using <em>port</em> (3000) for the 1st agument, and the <em>callback</em> function for the 2nd argument log whether the server has started.</li>
+</ol>
+<pre class="hljs"><code><div>app.listen(<span class="hljs-number">3000</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Server started at port : 3000'</span>));
+</div></code></pre>
+<p>In summary the <em>index.js</em> will have the following so far;</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
+
+<span class="hljs-keyword">const</span> {mongoose} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./db.js'</span>);
+<span class="hljs-keyword">var</span> employeeController = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./controllers/employeeController.js'</span>)  
+
+<span class="hljs-keyword">var</span> app = express();
+app.use(bodyParser.json());
+
+app.listen(<span class="hljs-number">3000</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Server started at port : 3000'</span>));
+</div></code></pre>
+<p>Test the server on cmd.</p>
+<pre class="hljs"><code><div>&gt; nodemon index.js
+</div></code></pre>
+<p>Create a 'models' folder inside NodeJS folder for the mongoose package and a file inside for eg. called <em>&quot;employees.js&quot;</em>. Inside the <em>employees.js</em> create a schema for the database.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+
+<span class="hljs-keyword">var</span> Employee = mongoose.model(<span class="hljs-string">'Employee'</span>, {
+    <span class="hljs-attr">name</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">String</span> },
+    <span class="hljs-attr">position</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">String</span> },
+    <span class="hljs-attr">office</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">String</span> },
+    <span class="hljs-attr">salary</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">Number</span> }
+});
+
+<span class="hljs-built_in">module</span>.exports = {Employee};
+</div></code></pre>
+<h1 id="write-crud-operations-on-server-side">Write CRUD operations on server side</h1>
+<h2 id="get-request">GET request</h2>
+<p>Create a new folder, 'controllers' to hold the Express Router configuration files. Create a new file inside called for eg. <em>'employeeController.js'</em> to configure the Express Router.</p>
+<ol>
+<li>Import express module and create <em>router</em> variable by calling 'Router' function from express constant;</li>
+</ol>
+<pre class="hljs"><code><div>cont express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">var</span> router = express.Router();
+</div></code></pre>
+<ol start="2">
+<li>Import the mongoose model (eg.'Employee') from the 'models' folder and route to database using express.</li>
+</ol>
+<p>For Express, using the <a href="https://expressjs.com/en/4x/api.html#router">Router object</a> and its <a href="http://expressjs.com/en/5x/api.html#app.get">app.get(<em>path, callback</em>)</a> method.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> { Employee } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/employee'</span>);
+
+<span class="hljs-comment">// =&gt; localhost:3000/employees/</span>
+router.get(<span class="hljs-string">'/'</span>,(req,res) =&gt; {
+    Employee.find(<span class="hljs-function">(<span class="hljs-params">err, docs</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (!err) { res.send(docs); }
+        <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Erorr in retreiving Employees db :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span> , <span class="hljs-number">2</span>)); }
+    });
+});
+</div></code></pre>
+<blockquote>
+<h3 id="a-quick-note-on-callback-function">A quick note on <em>callback</em> function:</h3>
+<ol>
+<li>It has 2 properties we use commonly; <a href="http://expressjs.com/en/5x/api.html#req"><em>request (req)</em></a> and <a href="http://expressjs.com/en/5x/api.html#res"><em>response (res)</em></a>.</li>
+<li>The <em>req</em> object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.</li>
+<li>The <em>res</em> object represents the HTTP response that an Express app sends back to the client when it gets an HTTP request.</li>
+<li>Inside each property we call a mongoose model method. For example, in the example above, we send and HTTP request to the mongoose model method, Model.find().</li>
+<li>We often use the properties in the mongoose method, <em>err</em> to log erros and <em>docs</em> nested inside the <em>req</em>, <em>res</em> propoerties to send the data from the database back to the client.</li>
+</ol>
+<p>for example;</p>
+<pre class="hljs"><code><div>app.get(<span class="hljs-string">'/'</span>,(req,res) =&gt; {
+   Model.find(<span class="hljs-function">(<span class="hljs-params">err, docs</span>) =&gt;</span> {
+       <span class="hljs-keyword">if</span> (!err) { res.send(docs); }
+       <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Erorr in retreiving Employees db :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, &gt;<span class="hljs-literal">undefined</span> , <span class="hljs-number">2</span>)); }
+   });
+});
+</div></code></pre>
+</blockquote>
+<ol start="3">
+<li>Configure the routes inside the root file, index.js. (Still inside the schema router filer, <em>employeeController.js</em> file):</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-built_in">module</span>.exports = router;
+</div></code></pre>
+<ol start="4">
+<li>Import the controller file into the root file (<em>index.js</em>).</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> employeeController = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./controllers/employeeController.js'</span>)
+</div></code></pre>
+<ol start="5">
+<li>Call the middleware function and use the base URL for the controller.</li>
+</ol>
+<pre class="hljs"><code><div>app.use(<span class="hljs-string">'/employees'</span>, employeeController);
+</div></code></pre>
+<h2 id="post-request">POST request</h2>
+<ol>
+<li>Write the 'post' method in the controller file using the <a href="https://expressjs.com/en/4x/api.html#router">Router object in Express</a>, and creat an model class that corresponds to it's database schema. This will send JSON data of a new object (in this case, employee).</li>
+</ol>
+<pre class="hljs"><code><div>router.post(<span class="hljs-string">'/'</span>, (req, res) =&gt; {
+    <span class="hljs-keyword">var</span> emp = <span class="hljs-keyword">new</span> Employe({
+        <span class="hljs-attr">name</span>: req.body.name,
+        <span class="hljs-attr">position</span>: req.body.position,
+        <span class="hljs-attr">office</span>: req.body.office,
+        <span class="hljs-attr">salary</span>: req.body.salary,
+    });
+});
+</div></code></pre>
+<ol start="2">
+<li>To insert the new data into MongoDB call the <a href="https://mongoosejs.com/docs/api.html#model_Model-save">'save' function from the new mongoose model object</a> created in the previous step (in this case to 'emp')., with arguments 'err' and 'doc'. If there is no error, call the ['send' method from Express 'response' function] (http://expressjs.com/en/5x/api.html#res.send).</li>
+</ol>
+<pre class="hljs"><code><div>router.post(<span class="hljs-string">'/'</span>, (req,res) =&gt; {
+    <span class="hljs-keyword">var</span> emp = <span class="hljs-keyword">new</span> Employee({
+        <span class="hljs-attr">name</span>: req.body.name,
+        <span class="hljs-attr">position</span>: req.body.position,
+        <span class="hljs-attr">office</span>: req.body.office,
+        <span class="hljs-attr">salary</span>: req.body.salary,
+    });
+    emp.save(<span class="hljs-function">(<span class="hljs-params">err, doc</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (!err) { res.send(doc); }
+        <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error in Employee Save :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>));}
+    });
+});
+</div></code></pre>
+<ol start="3">
+<li>Test the POST request on Postman application. Select the parameter, 'post', 'body' (in columns), select 'raw' and 'JSON' data. Type in test parameters in JSON format according to the database schema created previously, then send to the relevant URL, port and directory (In this case 'localhost:3000/employees/').</li>
+</ol>
+<p>eg.</p>
+<p><img src="IMGS/post-test.JPG" alt="Postman screenshot"></p>
+<pre class="hljs"><code><div>{
+    <span class="hljs-attr">"name"</span>:<span class="hljs-string">"Ashton Cox"</span>,
+    <span class="hljs-attr">"position"</span>:<span class="hljs-string">"Snr. Dev"</span>,
+    <span class="hljs-attr">"office"</span>:<span class="hljs-string">"London"</span>,
+    <span class="hljs-attr">"salary"</span>:<span class="hljs-number">30000</span>
+}
+</div></code></pre>
+<p>Check in your mongoose database if this data has been received. You can also check on your browser using the appropriate URL and directory, [http://localhost:3000/employees/].</p>
+<h3 id="another-get-request-for-unique-ids">Another GET request for unique IDs</h3>
+<p>Inside the controllers file eg. controllers/employeeController.js</p>
+<ol>
+<li>Import mongoose 'ObjectId' module.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> ObjectId = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>).Types.ObjectId;
+</div></code></pre>
+<ol start="2">
+<li>Call another GET request in Express check if the object is valid using the newly imported mongoose module above. If it is not valid call the error code 400 to log that it is not a valid object.</li>
+</ol>
+<pre class="hljs"><code><div>router.get(<span class="hljs-string">'/:id'</span>, (req, res) =&gt; {
+    <span class="hljs-keyword">if</span> (!ObjectId.isValid(req.params.id))
+    <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send(<span class="hljs-string">'No record with given id : ${req.params.id}'</span>));
+</div></code></pre>
+<ol start="3">
+<li>If the given ID is valid retrieve the relevant ID</li>
+</ol>
+<pre class="hljs"><code><div>router.post(<span class="hljs-string">'/'</span>, (req,res) =&gt; {
+    <span class="hljs-keyword">var</span> emp = <span class="hljs-keyword">new</span> Employee({
+        <span class="hljs-attr">name</span>: req.body.name,
+        <span class="hljs-attr">position</span>: req.body.position,
+        <span class="hljs-attr">office</span>: req.body.office,
+        <span class="hljs-attr">salary</span>: req.body.salary,
+    });
+    emp.save(<span class="hljs-function">(<span class="hljs-params">err, doc</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (!err) { res.send(doc); }
+        <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error in Employee Save :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>));}
+    });
+});
+</div></code></pre>
+<ol start="4">
+<li>Test that the ID directory works. Copy the ID from the JSON data checked above and paste in the URL.</li>
+</ol>
+<p>eg. http://localhost:3000/employees/63aac0377c266071ad2396a6</p>
+<h2 id="update-request">UPDATE request</h2>
+<p>Inside the contoller file, we call the PUT method from the Express middleware.</p>
+<ol>
+<li>Check first if the object id is valid. If not, call an error message.</li>
+<li>If the obejct is valid, call the object the variable with the appropriate properties.</li>
+</ol>
+<pre class="hljs"><code><div>router.put(<span class="hljs-string">'/:id'</span>, (req, res) =&gt; {
+    <span class="hljs-keyword">if</span> (!ObjectId.isValid(req.params.id))
+        <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send(<span class="hljs-string">'No record with given id : ${req.params.id}'</span>)
+    <span class="hljs-keyword">var</span> emp = {
+        <span class="hljs-attr">name</span>: req.body.name,
+        <span class="hljs-attr">position</span>: req.body.position,
+        <span class="hljs-attr">office</span>: req.body.office,
+        <span class="hljs-attr">salary</span>: req.body.salary,
+    }
+}
+</div></code></pre>
+<ol start="3">
+<li>Then use the mongoose model function, <a href="https://mongoosejs.com/docs/api.html#model_Model-findByIdAndUpdate">Model.findByIdAndUpdate(id, update, options, callback)</a>.
+The parameters in the function above can use the following syntax in mongoose like the example below;</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>req.params.id</td>
+</tr>
+<tr>
+<td>update</td>
+<td>{$set.modelVar}</td>
+</tr>
+<tr>
+<td>options</td>
+<td>{ new : true}</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>(err, doc) and set call back conditions</td>
+</tr>
+</tbody>
+</table>
+<p>for eg.</p>
+<pre class="hljs"><code><div>Employee.findByIdAndUpdate(req.params.id, {<span class="hljs-attr">$set</span>:emp}, { <span class="hljs-attr">new</span>: <span class="hljs-literal">true</span>}, (err, doc) =&gt; {
+        <span class="hljs-keyword">if</span> (!err) { res.send(doc); }
+        <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error in Employee Save :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>));}
+    });
+</div></code></pre>
+<p>In summary, the PUT request should look like the following;</p>
+<pre class="hljs"><code><div>router.put(<span class="hljs-string">'/:id'</span>, (req, res) =&gt; {
+    <span class="hljs-keyword">if</span> (!ObjectId.isValid(req.params.id))
+        <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send(<span class="hljs-string">'No record with given id : ${req.params.id}'</span>)
+    <span class="hljs-keyword">var</span> emp = {
+        <span class="hljs-attr">name</span>: req.body.name,
+        <span class="hljs-attr">position</span>: req.body.position,
+        <span class="hljs-attr">office</span>: req.body.office,
+        <span class="hljs-attr">salary</span>: req.body.salary,
+    }
+    Employee.findByIdAndUpdate(req.params.id, {<span class="hljs-attr">$set</span>:emp}, { <span class="hljs-attr">new</span>: <span class="hljs-literal">true</span>}, (err, doc) =&gt; {
+        <span class="hljs-keyword">if</span> (!err) { res.send(doc); }
+        <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error in Employee Save :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>));}
+    });
+});
+</div></code></pre>
+<h2 id="destroy-method">DESTROY method</h2>
+<p>Use the 'Delete' method on Express, <a href="http://expressjs.com/en/5x/api.html#app.delete.method">app.delete(path, callback [, callback ...])</a> to destroy a database object. The following syntax can be used for the arguments;</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>eg. Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>'/:id'</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>(req, res) =&gt; etc.</td>
+</tr>
+</tbody>
+</table>
+<p>In the request condition, check if the object is valid in the database, if not call back error. If it is valid, move to the response function and call the <a href="https://mongoosejs.com/docs/api.html#model_Model-findByIdAndRemove">Model.findByIdAndRemove(id, options, callback)</a> mongo method.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>snytax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>req.params.id</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>(err, doc) and set call back conditions</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div>router.delete(<span class="hljs-string">'/:id'</span>, (req,res) =&gt; {
+    <span class="hljs-keyword">if</span> (!ObjectId.isValid(req.params.id))
+    <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).send(<span class="hljs-string">'No record with given id : ${req.params.id}'</span>);
+    Employee.findByIdAndRemove(req.params.id, (err,doc) =&gt; {
+        <span class="hljs-keyword">if</span> (!err) { res.send(doc); }
+        <span class="hljs-keyword">else</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error in Employee Delete :'</span> + <span class="hljs-built_in">JSON</span>.stringify(err, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>));}
+    });
+});
+</div></code></pre>
+<h1 id="write-client-on-angular-frontend-framework">Write client on Angular frontend framework</h1>
+<ol>
+<li>Create a new angular app inside the project folder</li>
+</ol>
+<p>You can use the simple command with the angular cli</p>
+<pre class="hljs"><code><div>..\Project\&gt; ng new title-of-new-app
+</div></code></pre>
+<ol start="2">
+<li>Fill in stylesheets inside the <em>index.html</em> template. In this example we use the materialize UI</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!doctype <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>NewApp<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/x-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"favicon.ico"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--Import materialize.css--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--Import Google Icon Font--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/icon?family=Material+Icons"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">app-root</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-root</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--Import Script for materialize--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<ol start="3">
+<li>Import a CSS styleshet into the global CSS file. For example;</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment">/* You can add global styles to this file, and also import other style files */</span>
+<span class="hljs-comment">/* Set the background color for the body element */</span>
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fafafa</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the font color for headings */</span>
+  <span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span>, <span class="hljs-selector-tag">h3</span>, <span class="hljs-selector-tag">h4</span>, <span class="hljs-selector-tag">h5</span>, <span class="hljs-selector-tag">h6</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the font color for the navigation links */</span>
+  <span class="hljs-selector-class">.nav-wrapper</span> <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the background color for the navigation bar */</span>
+  <span class="hljs-selector-class">.navbar-fixed</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00bcd4</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the background and font colors for buttons */</span>
+  <span class="hljs-selector-class">.btn</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00bcd4</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the background and font colors for button hover states */</span>
+  <span class="hljs-selector-class">.btn</span><span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00acc1</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the font color for the card titles */</span>
+  <span class="hljs-selector-class">.card-title</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the background color for the cards */</span>
+  <span class="hljs-selector-class">.card</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
+  }
+  
+  <span class="hljs-comment">/* Set the background color for the footer */</span>
+  <span class="hljs-selector-tag">footer</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00bcd4</span>;
+  }
+</div></code></pre>
+<ol start="4">
+<li>Inside the angular app folder add a new component using angular CLI. For example,</li>
+</ol>
+<pre class="hljs"><code><div>..\Project\new-app\&gt; ng g c employee
+</div></code></pre>
+<ol start="5">
+<li>Add folder called 'shared' inside the 'app' folder, and create a class inside the folder, with the CLI argument,  <code>--type=model</code></li>
+</ol>
+<p>For example,</p>
+<pre class="hljs"><code><div>...Project\new-app\src\app\shared\&gt; ng g class employee --type=model
+</div></code></pre>
+<ol start="6">
+<li>Create a service class inside the same folder</li>
+</ol>
+<pre class="hljs"><code><div>Project\new-app\src\app\shared\&gt; ng g s employee
+</div></code></pre>
+<ol start="7">
+<li>Add object properties corresponding to the mongodb schema inside the newly created model class.</li>
+</ol>
+<p>For example,</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Employee {
+    _id: <span class="hljs-built_in">string</span>;
+    name: <span class="hljs-built_in">string</span>;
+    position: <span class="hljs-built_in">string</span>;
+    salary: <span class="hljs-built_in">number</span>;
+}
+</div></code></pre>
+<p>Usually the above would be enough, but in new versions of TypeScript, the initialization syntax is more strict, and would the above syntax might cause an error. If so, initialize the above properties using the constructor class with the syntax below;</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Employee {
+    _id: <span class="hljs-built_in">string</span>;
+    name: <span class="hljs-built_in">string</span>;
+    position: <span class="hljs-built_in">string</span>;
+    office: <span class="hljs-built_in">string</span>;
+    salary: <span class="hljs-built_in">number</span>;
+  
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">id: <span class="hljs-built_in">string</span>, name: <span class="hljs-built_in">string</span>, position: <span class="hljs-built_in">string</span>, office: <span class="hljs-built_in">string</span>, salary: <span class="hljs-built_in">number</span></span>) {
+      <span class="hljs-keyword">this</span>._id = id;
+      <span class="hljs-keyword">this</span>.name = name;
+      <span class="hljs-keyword">this</span>.position = position;
+      <span class="hljs-keyword">this</span>.office = office;
+      <span class="hljs-keyword">this</span>.salary = salary;
+    }
+  }
+</div></code></pre>
+<ol start="8">
+<li>Import _HttpClient, rxjs Observersable, rxjs map and rxjs to promis to the service class. Also import the <em>Model</em> object inside the service class.</li>
+</ol>
+<p>For example, inside the <em>employee.service.ts</em> file</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { HttpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/common/http'</span>;
+<span class="hljs-keyword">import</span> { Observable, of } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
+<span class="hljs-keyword">import</span> { map, catchError } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/operators'</span>;
+
+<span class="hljs-keyword">import</span> { Employee } <span class="hljs-keyword">from</span> <span class="hljs-string">'./employee.model'</span>;
+</div></code></pre>
+<ol start="9">
+<li>Create 2 variables inside the service class.</li>
+</ol>
+<p>For example,
+Inside the <code>employees</code> property we have array of <em>Employee</em>, where all <em>employees</em> from the mongodb collection will be saved. Inside the <code>selectedEmployee</code> property we will design a form for inserting and updating operations. Again, initialize these properties using the consctructor class.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@Injectable</span>({
+  providedIn: <span class="hljs-string">'root'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> EmployeeService {
+  selectedEmployee: Employee;
+  employees: Employee[];
+
+    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">this</span>.employees = [];
+    <span class="hljs-keyword">this</span>.selectedEmployee = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-string">''</span>, <span class="hljs-number">0</span>);
+  }
+}
+</div></code></pre>
+<ol start="10">
+<li><a href="https://angular.io/guide/dependency-injection">Dependency injection</a>: Import the service class into the component;</li>
+</ol>
+<p>for example from the <em>shared/employee.service.ts</em>, import to Employee component, <em>employee/employee.component.ts</em>. We do this in 3 steps.</p>
+<ul>
+<li>locallly import <code>ServiceClass</code> from ```[./shared/class.service]</li>
+<li>Add the service metadata inside the component decorator. Inside <code>@Component({ providers: [ServiceClass] })</code>.</li>
+<li>Finally, to complete the dependency injection, add the Service logic to the constructor in the component class: ie,  <code>export class ComponentName{  }</code> .</li>
+</ul>
+<blockquote>
+<p>Quick note on TS class: Any property in <code>export class ComponentName{ constructor(private employeeService: EmployeeService) { } }</code> is in a reactive state. Meaning anytime a property value is changed, it is automatically deteceted the component is re-rendered in the UI.</p>
+</blockquote>
+<p>For example, if we add the 'EmployeeService' ;</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-keyword">import</span> { EmployeeService } <span class="hljs-keyword">from</span> <span class="hljs-string">'../shared/employee.service'</span>;
+
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'app-employee'</span>,
+  templateUrl: <span class="hljs-string">'./employee.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./employee.component.css'</span>],
+  providers: [EmployeeService]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> EmployeeComponent {
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> employeeService: EmployeeService</span>) { }
+
+  ngOnInit() {
+
+  }
+
+
+}
+</div></code></pre>
+<ol start="11">
+<li>Create a form template with the fields required inside the component template.</li>
+</ol>
+<ul>
+<li>Import the ReactiveFormsModuls and te FormsModuls to the app.module.ts file</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { ReactiveFormsModule, FormsModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { HttpClientModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/common/http'</span>;
+
+<span class="hljs-meta">@NgModule</span>({
+  declarations: [
+  ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+</div></code></pre>
+<ul>
+<li>Create a <code>&lt;form&gt;&lt;/form&gt;</code> tag and inside it, add the <code>onSubmit()</code> method (that we earlier inserted inside the component class).</li>
+<li>Add a hidden input tag, to tag the &quot;_id&quot; of the data model from the database.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_id"</span>&gt;</span>
+</div></code></pre>
+<ul>
+<li>Add the <a href="https://angular.io/guide/two-way-binding">two-way data binding</a> using <a href="https://angular.io/guide/built-in-directives#ngModel">ngModel</a> directive and direct it the model property in the following order
+<ul>
+<li>serviceClass =&gt; selectedModel (inside the serviceClass) =&gt; property (inside Model)
+<code>serviceClass.selectedModel.property</code></li>
+</ul>
+</li>
+</ul>
+<p>For example the following syntax can be used;</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_id"</span> #<span class="hljs-attr">_id</span>=<span class="hljs-string">"ngModel"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"employeeService.selectedEmployee._id"</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>Two way data binding means that changes made to our model in the component are propagated to the view and that any changes made in the view are immediately updated in the underlying component data.</p>
+</blockquote>
+<p>for example;</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col s12 m6"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card blue-grey darken-1"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-content white-text"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-title"</span>&gt;</span>Employees<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>MEAN stack tutorial test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"card-action"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">employeeForm</span>=<span class="hljs-string">"ngForm"</span> (<span class="hljs-attr">ngSubmit</span>)=<span class="hljs-string">"onSubmit()"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_id"</span> #<span class="hljs-attr">_name</span>=<span class="hljs-string">"ngModel"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"employeeService.selectedEmployee._id"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-field"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> #<span class="hljs-attr">name</span>=<span class="hljs-string">"ngModel"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"employeeService.selectedEmployee.name"</span> [<span class="hljs-attr">ngModelOptions</span>]=<span class="hljs-string">"{standalone: true}"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"name"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-field"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"position"</span> #<span class="hljs-attr">name</span>=<span class="hljs-string">"ngModel"</span>  [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"employeeService.selectedEmployee.position"</span> [<span class="hljs-attr">ngModelOptions</span>]=<span class="hljs-string">"{standalone: true}"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"position"</span>&gt;</span>Position<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-field"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"office"</span> #<span class="hljs-attr">name</span>=<span class="hljs-string">"ngModel"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"employeeService.selectedEmployee.office"</span> [<span class="hljs-attr">ngModelOptions</span>]=<span class="hljs-string">"{standalone: true}"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"office"</span>&gt;</span>Office<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-field"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"salary"</span> #<span class="hljs-attr">name</span>=<span class="hljs-string">"ngModel"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"employeeService.selectedEmployee.salary"</span> [<span class="hljs-attr">ngModelOptions</span>]=<span class="hljs-string">"{standalone: true}"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"salary"</span>&gt;</span>Salary<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn waves-effect waves-light right"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>
+                  Submit
+                  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons right"</span>&gt;</span>send<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn waves-effect waves-light"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"resetForm(employeeForm)"</span>&gt;</span>
+                    Reset
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons right"</span>&gt;</span>send<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+              
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            
+
+</div></code></pre>
+<h2 id="add-reset-button-function-to-form">Add Reset button function to form</h2>
+<ul>
+<li>In the form component import the <code>NgForm</code> directive from <code>'@angular/forms'</code>;</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { NgForm } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+</div></code></pre>
+<p><code>resetForm( form?: NgForm )</code>: This line defines the &quot;resetForm&quot; function and specifies that it takes an optional argument &quot;form&quot; of type &quot;NgForm&quot;. The &quot;?&quot; symbol indicates that the &quot;form&quot; argument is optional, meaning that it is not required to be passed when the function is called.</p>
+<p><code>if (form)</code>: This line checks to see if the &quot;form&quot; argument was passed when the function was called. If it was passed, the code inside the block will be executed. If it was not passed, the code block will be skipped.</p>
+<p><code>form.reset()</code>: This line calls the &quot;reset&quot; method on the &quot;form&quot; argument, which resets the form control to its default state. This means that any user input or changes to the form will be cleared, and the form will be returned to its original state.</p>
+<p><code>this.employeeService.selectedEmployee = { ... }</code>: This line resets the values of the &quot;employeeService.selectedEmployee&quot; model object to their default values. This model object is likely being used to store data that is being displayed in the form and/or being used to create or edit an employee record in a database or other data source. By resetting the values of this model object, the form and any associated data will be returned to their original state as well.</p>
+<pre class="hljs"><code><div>  resetForm( form?: NgForm ) {
+    <span class="hljs-keyword">if</span> (form)
+      <span class="hljs-comment">// Reset form controls</span>
+      form.reset();
+      <span class="hljs-comment">// Reset model values</span>
+      <span class="hljs-keyword">this</span>.employeeService.selectedEmployee = {
+        _id: <span class="hljs-string">""</span>,
+        name: <span class="hljs-string">""</span>,
+        position: <span class="hljs-string">""</span>,
+        office: <span class="hljs-string">""</span>,
+        salary: <span class="hljs-number">0</span>
+      }
+  }
+</div></code></pre>
+<p>Then we need to initialize the funtion using the <code>NgOnInit</code> directive inside the component class.</p>
+<blockquote>
+<p><a href="https://angular.io/api/core/OnInit"><code>NgOninit</code></a> is a lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.</p>
+</blockquote>
+<p>The &quot;resetForm&quot; function is being called without any arguments, which means that it will reset the values of the &quot;employeeService.selectedEmployee&quot; model object to their default values, but will not affect the form control.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> EmployeeComponent {
+  
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.resetForm();
+  }
+}
+</div></code></pre>
+<h2 id="using-the-submit-function-and-connecting-it-to-the-post-route-in-the-node-server">Using the Submit function and connecting it to the POST route in the node server</h2>
+<ol>
+<li>Create a function inside the service class with a single parameter (whiche is the Model). You can use the following syntax;</li>
+</ol>
+<pre class="hljs"><code><div>postfunction(mod : Model)
+</div></code></pre>
+<p>In our example, it will look like follows;</p>
+<pre class="hljs"><code><div>postEmployee(emp : Employee){}
+</div></code></pre>
+<ol start="2">
+<li>We need to use the <code>HttpClient</code> module from angular. First make sure the module is imported  and then add it to the constructor to the <em>service.ts</em> and import <code>HttpClientModule</code> to the <em>apps.module.ts</em> file.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> http: HttpClient</span>)
+</div></code></pre>
+<ol start="3">
+<li>Inside the <em>service.ts</em> file, create a readonly variable with baseURL to the where the nodeserver is hosted. (In our case, port localhost:3000/employees)</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> {
+    readonly baseURL = <span class="hljs-string">'http://localhost:3000/employees'</span>;
+}
+</div></code></pre>
+<ol start="4">
+<li>Call the <code>post()</code> function from the ```HttpClient`` object, with arguments for the baseURL and the JSON object containing the relevant data. This post functions returns and observable.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span>{ postEmployee(emp: Employee){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.post(<span class="hljs-keyword">this</span>.baseURL, emp);
+    }
+}
+
+</div></code></pre>
+<ol start="5">
+<li>
+<p>In the <em>component.ts</em> file create a function, <code>onSubmit()</code>,</p>
+<ul>
+<li>
+<p>Call the &quot;postEmployee&quot; method of the &quot;employeeService&quot; object, passing it the value of the form control element as an argument. This method is likely used to send the form data to a server or other data source to create a new employee record.</p>
+</li>
+<li>
+<p>Subscribes to the observable returned by the &quot;postEmployee&quot; method using the &quot;subscribe&quot; method. This allows the component to be notified when the request has completed and receive the response from the server.</p>
+</li>
+<li>
+<p>Inside the subscribe callback function, the &quot;resetForm&quot; function is called and passed the &quot;form&quot; argument. This causes the form control to be reset to its default state and the &quot;employeeService.selectedEmployee&quot; model object to be reset to its default values.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code is creating a new employee record using the data from the form and resetting the form and associated data to their default state when the request has completed.</p>
+<pre class="hljs"><code><div>onSubmit( form: NgForm ){
+    <span class="hljs-keyword">this</span>.employeeService.postEmployee(form.value).subscribe((<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.resetForm(form);
+    }));
+}
+</div></code></pre>
+<ol start="6">
+<li>We can add a <a href="https://materializecss.com/toasts.html">'toast'</a> component from the 'materialise UI' library to let us know that the data has been submitted. First make sure to declare the variable <code>M</code> before the <code>@Component</code> decorator.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">declare</span> <span class="hljs-keyword">var</span> M: <span class="hljs-built_in">any</span>;
+</div></code></pre>
+<p>Then add the toast funtion the <code>onSubmit()</code> function (if you want, with <code>rounded</code> borders );</p>
+<pre class="hljs"><code><div>onSubmit( form: NgForm ){
+    <span class="hljs-keyword">this</span>.employeeService.postEmployee(form.value).subscribe((<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.resetForm(form);
+        M.toast({html: <span class="hljs-string">'Saved successfully'</span>, classes: <span class="hljs-string">'rounded'</span> })
+    }));
+}
+</div></code></pre>
+<h3 id="cors">CORS</h3>
+<p>If we now try to enter data into our Angular form and try posting something we are notified with the following error in our client;</p>
+<blockquote>
+<p>localhost/:1 Access to XMLHttpRequest at 'http://localhost:3000/employees' from origin 'http://localhost:4200' has been blocked by CORS policy:</p>
+</blockquote>
+<p>It's a basic security protocol. Without CORS any domain or port will block sharing data between ports/domains. Therefore we have to enable CORS inside the NodeJS project, by simply installing a node package and saving it to the <em>package.json</em></p>
+<pre class="hljs"><code><div>..Project/NodeJS&gt; npm i cors --save
+</div></code></pre>
+<p>Now import the CORS module to the node server file, <em>index.js</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cors'</span>);
+</div></code></pre>
+<p>Use the middleware function <code>app.use()</code> to activate it, and parse the URL where the angular app is hosted;</p>
+<pre class="hljs"><code><div>app.use(cors({ <span class="hljs-attr">origin</span>: <span class="hljs-string">'http://localhost:4200'</span>}));
+</div></code></pre>
+<p>Run the nodeserver and the angular app, input the data and check the MongoDB database if the data has been posted. If so, congratulations! We have a working MEAN stack app!</p>
+<h2 id="displaying-object-data-in-angular">Displaying Object data in Angular</h2>
+<p>In the template;</p>
+<ol>
+<li>Use the <code>NgFor*</code> directive to iterate through the <code>Employees[]</code> array (collection of Employees),</li>
+<li>Use a single data binding using the object <code>emp</code> and relevant properties.</li>
+</ol>
+<pre class="hljs"><code><div>&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"col s7"</span>&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;<span class="hljs-regexp">/th&gt;
+            &lt;th&gt;Position&lt;/</span>th&gt;
+            &lt;th&gt;Office&lt;<span class="hljs-regexp">/th&gt;
+            &lt;th&gt;&lt;/</span>th&gt;
+        &lt;<span class="hljs-regexp">/tr&gt;
+    &lt;/</span>thead&gt;
+    &lt;tr *ngFor = <span class="hljs-string">"let emp of employeeService.employees"</span>&gt;
+        &lt;td&gt;{{emp.name}}&lt;<span class="hljs-regexp">/td&gt;
+        &lt;td&gt;{{emp.position}}&lt;/</span>td&gt;
+        &lt;td&gt;{{emp.office}}&lt;<span class="hljs-regexp">/td&gt;
+        &lt;td&gt;  &lt;a class="waves-effect waves-teal btn-flat"&gt;&lt;i class="material-icons"&gt;edit&lt;/i</span>&gt;&lt;<span class="hljs-regexp">/a&gt;
+            &lt;a class="waves-effect waves-teal btn-flat"&gt;&lt;i class="material-icons"&gt;delete&lt;/i</span>&gt;&lt;<span class="hljs-regexp">/a&gt;
+
+        &lt;/</span>td&gt;
+    &lt;<span class="hljs-regexp">/tr&gt;
+&lt;/</span>table&gt;
+
+&lt;<span class="hljs-regexp">/div&gt;
+</span></div></code></pre>
+<p>We still need to fetch the posted data from the MongoDB database.</p>
+<ol>
+<li>Make a GET request from the <em>service.ts</em> file</li>
+</ol>
+<pre class="hljs"><code><div>  getEmployeeList() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.get(<span class="hljs-keyword">this</span>.baseURL);
+  }
+</div></code></pre>
+<ol start="2">
+<li>Import the <code>Employee</code> model into the <em>component.ts</em> file;</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { Employee } <span class="hljs-keyword">from</span> <span class="hljs-string">'../shared/employee.model'</span>;
+</div></code></pre>
+<ol start="3">
+<li>Inside the <code>EmployeeComponent</code> class of the <em>component.ts</em> file, add the refresh list function to update the from the database everytime the page is reloaded;</li>
+</ol>
+<pre class="hljs"><code><div>refreshEmployeeList() {
+    <span class="hljs-keyword">this</span>.employeeService.getEmployeeList().subscribe(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+      <span class="hljs-keyword">this</span>.employeeService.employees = res <span class="hljs-keyword">as</span> Employee[];
+    })
+  }
+</div></code></pre>
+<ol start="4">
+<li>Initialise the function in the life cycle hook, <code>NgOninit</code>.</li>
+</ol>
+<pre class="hljs"><code><div>ngOnInit() {
+    <span class="hljs-keyword">this</span>.refreshEmployeeList();
+  }
+</div></code></pre>
+<h2 id="updating-data">Updating data</h2>
+<ol>
+<li>Add an 'edit' icon to the database list on angular, and the function; <code>onEdit(emp)</code> to the button;</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Position<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Office<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> *<span class="hljs-attr">ngFor</span> = <span class="hljs-string">"let emp of employeeService.employees"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{emp.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{emp.position}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{emp.office}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"waves-effect waves-teal btn-flat"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"onEdit(emp)"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons"</span>&gt;</span>edit<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"waves-effect waves-teal btn-flat"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons"</span>&gt;</span>delete<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</div></code></pre>
+<ol start="2">
+<li>Define the <code>onEdit()</code> function in the <em>component.ts</em> file;</li>
+</ol>
+<pre class="hljs"><code><div>  onEdit( emp: Employee ){
+    <span class="hljs-keyword">this</span>.employeeService.selectedEmployee = emp;
+  }
+</div></code></pre>
+<ol start="3">
+<li>Define a PUT route in the <em>service.ts</em> file;</li>
+</ol>
+<pre class="hljs"><code><div>  putEmployee(emp: Employee){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.put(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.baseURL}</span>/<span class="hljs-subst">${emp._id}</span>`</span>, emp);
+  }
+</div></code></pre>
+<ol start="4">
+<li>Update the <code>onSubmit()</code> function to do as follows; if the form has no _&quot;<em>id&quot;</em> let it be a POST request for a new data object, if not, let it be a PUT request to update an existing data object. You can change the 'toast' function to reflect to show 'saved' or 'updated'.</li>
+</ol>
+<pre class="hljs"><code><div>  onSubmit( form: NgForm ){
+    <span class="hljs-keyword">if</span> (form.value._id == <span class="hljs-string">""</span>) {
+      <span class="hljs-keyword">this</span>.employeeService.postEmployee(form.value).subscribe((<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(form.value);
+        <span class="hljs-keyword">this</span>.resetForm(form);
+        <span class="hljs-keyword">this</span>.refreshEmployeeList();
+        M.toast({html: <span class="hljs-string">'Saved successfully'</span>, classes: <span class="hljs-string">'rounded'</span> })
+    }));
+    }
+    <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>.employeeService.putEmployee(form.value).subscribe((<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(form.value);
+        <span class="hljs-keyword">this</span>.resetForm(form);
+        <span class="hljs-keyword">this</span>.refreshEmployeeList();
+        M.toast({html: <span class="hljs-string">'Updated successfully'</span>, classes: <span class="hljs-string">'rounded'</span> })
+    }));
+    }
+}
+</div></code></pre>
+<p>Test the function on the angular app, on submit, we should complete our update operation.</p>
+<h2 id="delete--destroy-operation">Delete / Destroy operation</h2>
+<ol>
+<li>Add a delete method to the <em>service.ts</em> file;</li>
+</ol>
+<pre class="hljs"><code><div>  deleteEmployee(_id: <span class="hljs-built_in">string</span>){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.delete(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.baseURL}</span>/<span class="hljs-subst">${_id}</span>`</span>);
+  }
+</div></code></pre>
+<ol start="2">
+<li>Add a delete function to the <em>component.ts</em> file. It has to first confirm deletion of data. When creating the function, let it have 2 arguments, the '_id' of the model and the form.</li>
+</ol>
+<pre class="hljs"><code><div>  onDelete(_id: <span class="hljs-built_in">string</span>, form: NgForm) {
+    <span class="hljs-keyword">if</span> (confirm(<span class="hljs-string">'Are you sure you want to delete this record ?'</span>) == <span class="hljs-literal">true</span>) {
+      <span class="hljs-keyword">this</span>.employeeService.deleteEmployee(_id).subscribe(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-keyword">this</span>.refreshEmployeeList();
+        <span class="hljs-keyword">this</span>.resetForm(form);
+        M.toast({html: <span class="hljs-string">'Deleted successfully'</span>, classes: <span class="hljs-string">'rounded'</span> });
+      });  
+    }
+  }
+</div></code></pre>
+<ol start="3">
+<li>Finally add the function to the HTML button;</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">tr</span> *<span class="hljs-attr">ngFor</span> = <span class="hljs-string">"let emp of employeeService.employees"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{emp.name}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{emp.position}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{emp.office}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"waves-effect waves-teal btn-flat"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"onEdit(emp)"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons"</span>&gt;</span>edit<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"waves-effect waves-teal btn-flat"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"onDelete(emp._id, employeeForm)"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"material-icons"</span>&gt;</span>delete<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+</div></code></pre>
+<p>That's it!</p>
+<p>A MEAN stack application was created with all CRUD operations.</p>
+
+</body>
+</html>
