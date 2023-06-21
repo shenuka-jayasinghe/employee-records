@@ -1,0 +1,580 @@
+<<<<<<< HEAD
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+/* <link rel="stylesheet" href=sample.css> */
+
+/* IMPORT SIDE NAV */
+
+/* <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()">open</span>
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+  ...
+</div> */
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.75em;
+	font-size: 16px;
+	background-color: #222;
+	color: #aaa;
+}
+
+.simple-container {
+	max-width: 675px;
+	margin: 0 auto;
+	padding-top: 70px;
+	padding-bottom: 20px;
+}
+
+code{
+    background: #1c1b1a;
+    border: #1c1b1a;
+    color: white;
+}
+
+.simple-print {
+	fill: white;
+	stroke: white;
+}
+.simple-print svg {
+	height: 100%;
+}
+
+.simple-close {
+	color: white;
+	border-color: white;
+}
+
+.simple-ext-info {
+	border-top: 1px solid #aaa;
+}
+
+p {
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 34px;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 25px;
+}
+
+h3 {
+	font-size: 16px;
+	line-height: 27px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #D8D8D8;
+	border-top: 1px solid #D8D8D8;
+}
+
+hr {
+	height: 1px;
+	background-color: #d8d8d8;
+	border: none;
+	width: 100%;
+	margin: 0px;
+}
+
+a[href] {
+	color: #1e8ad6;
+}
+
+a[href]:hover {
+	color: #3ba0e6;
+}
+
+img {
+	max-width: 100%;
+}
+
+li {
+	line-height: 1.5em;
+}
+
+aside,
+[class *= "sidebar"],
+[id *= "sidebar"] {
+	max-width: 90%;
+	margin: 0 auto;
+	border: 1px solid lightgrey;
+	padding: 5px 15px;
+}
+
+@media (min-width: 1921px) {
+	body {
+		font-size: 18px;
+	}
+}
+/*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+ .hljs {
+    background: #1E1E1E;
+    color: #DCDCDC;
+  }
+  
+  .hljs-keyword,
+  .hljs-literal,
+  .hljs-symbol,
+  .hljs-name {
+    color: #569CD6;
+  }
+  .hljs-link {
+    color: #569CD6;
+    text-decoration: underline;
+  }
+  
+  .hljs-built_in,
+  .hljs-type {
+    color: #4EC9B0;
+  }
+  
+  .hljs-number,
+  .hljs-class {
+    color: #B8D7A3;
+  }
+  
+  .hljs-string,
+  .hljs-meta .hljs-string {
+    color: #D69D85;
+  }
+  
+  .hljs-regexp,
+  .hljs-template-tag {
+    color: #9A5334;
+  }
+  
+  .hljs-subst,
+  .hljs-function,
+  .hljs-title,
+  .hljs-params,
+  .hljs-formula {
+    color: #DCDCDC;
+  }
+  
+  .hljs-comment,
+  .hljs-quote {
+    color: #57A64A;
+    font-style: italic;
+  }
+  
+  .hljs-doctag {
+    color: #608B4E;
+  }
+  
+  .hljs-meta,
+  .hljs-meta .hljs-keyword,
+  
+  .hljs-tag {
+    color: #9B9B9B;
+  }
+  
+  .hljs-variable,
+  .hljs-template-variable {
+    color: #BD63C5;
+  }
+  
+  .hljs-attr,
+  .hljs-attribute {
+    color: #9CDCFE;
+  }
+  
+  .hljs-section {
+    color: gold;
+  }
+  
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  
+  .hljs-strong {
+    font-weight: bold;
+  }
+  
+  /*.hljs-code {
+    font-family:'Monospace';
+  }*/
+  
+  .hljs-bullet,
+  .hljs-selector-tag,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo {
+    color: #D7BA7D;
+  }
+  
+  .hljs-addition {
+    background-color: #144212;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .hljs-deletion {
+    background-color: #600;
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* SIDENAV CSS */
+  /* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+=======
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+/* <link rel="stylesheet" href=sample.css> */
+
+/* IMPORT SIDE NAV */
+
+/* <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()">open</span>
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+  ...
+</div> */
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.75em;
+	font-size: 16px;
+	background-color: #222;
+	color: #aaa;
+}
+
+.simple-container {
+	max-width: 675px;
+	margin: 0 auto;
+	padding-top: 70px;
+	padding-bottom: 20px;
+}
+
+code{
+    background: #1c1b1a;
+    border: #1c1b1a;
+    color: white;
+}
+
+.simple-print {
+	fill: white;
+	stroke: white;
+}
+.simple-print svg {
+	height: 100%;
+}
+
+.simple-close {
+	color: white;
+	border-color: white;
+}
+
+.simple-ext-info {
+	border-top: 1px solid #aaa;
+}
+
+p {
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 34px;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 25px;
+}
+
+h3 {
+	font-size: 16px;
+	line-height: 27px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #D8D8D8;
+	border-top: 1px solid #D8D8D8;
+}
+
+hr {
+	height: 1px;
+	background-color: #d8d8d8;
+	border: none;
+	width: 100%;
+	margin: 0px;
+}
+
+a[href] {
+	color: #1e8ad6;
+}
+
+a[href]:hover {
+	color: #3ba0e6;
+}
+
+img {
+	max-width: 100%;
+}
+
+li {
+	line-height: 1.5em;
+}
+
+aside,
+[class *= "sidebar"],
+[id *= "sidebar"] {
+	max-width: 90%;
+	margin: 0 auto;
+	border: 1px solid lightgrey;
+	padding: 5px 15px;
+}
+
+@media (min-width: 1921px) {
+	body {
+		font-size: 18px;
+	}
+}
+/*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+ .hljs {
+    background: #1E1E1E;
+    color: #DCDCDC;
+  }
+  
+  .hljs-keyword,
+  .hljs-literal,
+  .hljs-symbol,
+  .hljs-name {
+    color: #569CD6;
+  }
+  .hljs-link {
+    color: #569CD6;
+    text-decoration: underline;
+  }
+  
+  .hljs-built_in,
+  .hljs-type {
+    color: #4EC9B0;
+  }
+  
+  .hljs-number,
+  .hljs-class {
+    color: #B8D7A3;
+  }
+  
+  .hljs-string,
+  .hljs-meta .hljs-string {
+    color: #D69D85;
+  }
+  
+  .hljs-regexp,
+  .hljs-template-tag {
+    color: #9A5334;
+  }
+  
+  .hljs-subst,
+  .hljs-function,
+  .hljs-title,
+  .hljs-params,
+  .hljs-formula {
+    color: #DCDCDC;
+  }
+  
+  .hljs-comment,
+  .hljs-quote {
+    color: #57A64A;
+    font-style: italic;
+  }
+  
+  .hljs-doctag {
+    color: #608B4E;
+  }
+  
+  .hljs-meta,
+  .hljs-meta .hljs-keyword,
+  
+  .hljs-tag {
+    color: #9B9B9B;
+  }
+  
+  .hljs-variable,
+  .hljs-template-variable {
+    color: #BD63C5;
+  }
+  
+  .hljs-attr,
+  .hljs-attribute {
+    color: #9CDCFE;
+  }
+  
+  .hljs-section {
+    color: gold;
+  }
+  
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  
+  .hljs-strong {
+    font-weight: bold;
+  }
+  
+  /*.hljs-code {
+    font-family:'Monospace';
+  }*/
+  
+  .hljs-bullet,
+  .hljs-selector-tag,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo {
+    color: #D7BA7D;
+  }
+  
+  .hljs-addition {
+    background-color: #144212;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .hljs-deletion {
+    background-color: #600;
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* SIDENAV CSS */
+  /* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+>>>>>>> fb9f18951b6e0c559faa05d603793f5b804c292f
+  }
