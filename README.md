@@ -8,7 +8,7 @@
 ```
 ...crud-tutorial\nodejs> node index.js
 ```
-This will tun the database on Port 3000. Keep it running, and open a new terminal.
+This will run the database on Port 3000. Keep it running, and open a new terminal.
 
 ### 2. Open the client on angular after navigating to the 'ng-crud-tutorial' folder
 ```
