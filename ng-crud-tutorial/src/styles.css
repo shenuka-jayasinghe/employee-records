@@ -1,48 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 /* Set the background color for the body element */
-body {
-    background-color: #fafafa;
-  }
-  
-  /* Set the font color for headings */
-  h1, h2, h3, h4, h5, h6 {
-    color: #333;
-  }
-  
-  /* Set the font color for the navigation links */
-  .nav-wrapper a {
-    color: #fff;
-  }
-  
-  /* Set the background color for the navigation bar */
-  .navbar-fixed {
-    background-color: #00bcd4;
-  }
-  
-  /* Set the background and font colors for buttons */
-  .btn {
-    background-color: #00bcd4;
-    color: #fff;
-  }
-  
-  /* Set the background and font colors for button hover states */
-  .btn:hover {
-    background-color: #00acc1;
-    color: #fff;
-  }
-  
-  /* Set the font color for the card titles */
-  .card-title {
-    color: #333;
-  }
-  
-  /* Set the background color for the cards */
-  .card {
-    background-color: #fff;
-  }
-  
-  /* Set the background color for the footer */
-  footer {
-    background-color: #00bcd4;
-  }
-  
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,27 +1,28 @@
-<div class="row">
+<div class="bg-gray-300">
+  <div class="row">
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title white-text">Employee Records</span>
+          <span class="card-title">Employee Records</span>
           <p>MEAN stack demo by Shenuka Jayasinghe</p>
         </div>
         <div class="card-action">
             <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
                 <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
                 <div class="input-field">
-                  <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" >
+                  <input class="white-text" type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" >
                   <label for="name">Name</label>
                 </div>
                 <div class="input-field">
-                  <input type="text" name="position" #name="ngModel"  [(ngModel)]="employeeService.selectedEmployee.position" >
+                  <input class="white-text" type="text" name="position" #name="ngModel"  [(ngModel)]="employeeService.selectedEmployee.position" >
                   <label for="position">Position</label>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office">
+                    <input class="white-text" type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office">
                     <label for="office">Office</label>
                   </div>
                   <div class="input-field">
-                    <input type="number" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary">
+                    <input class="white-text" type="number" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary">
                     <label for="salary">Salary</label>
                   </div>
                 <button class="btn waves-effect waves-light right" type="submit">
@@ -32,7 +33,7 @@
                     Reset
                   </button>
               </form>
-              <div class="col s7">
+              <div class="col s7 m-3 mt-10">
                 <table>
                     <thead>
                         <tr>
@@ -59,3 +60,5 @@
     </div>
   </div>
             
+
+</div>
